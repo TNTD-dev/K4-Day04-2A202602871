@@ -46,7 +46,7 @@ total_cases`, và tool result error đã được review thủ công.
 |---|---|---|---|---:|---:|---|
 | v0 | baseline | Thiết lập baseline chưa tối ưu làm mốc đo lường xuất phát cho cả nhóm | case_accuracy | - | 0.7000 | runs/v0_B_base_openai_20260914T192749735306.json |
 | v1 |  |  |  |  |  |  |
-| v2 |  |  |  |  |  |  |
+| v2 | Làm rõ tool descriptions, argument semantics, multi-call và safety boundaries trong `tools.yaml` | Contract rõ ràng giúp model chọn đúng tool/args hơn mà không tạo provider error | case_accuracy | 0.7000 | 0.9000 | runs/v2_B_base_openai_20260914T193748932332.json |
 | v3 |  |  |  |  |  |  |
 
 ## B2. Failure analysis
