@@ -1,7 +1,7 @@
 # Quy ước Evidence & Quy chuẩn Đặt tên (Shared Evidence Rules)
 
-> **Tài liệu dùng chung cho cả nhóm (Role A, B, C, D, E)**  
-> **Người thiết lập:** Role C (Eval & Evidence Engineer)  
+> **Tài liệu dùng chung cho cả nhóm (Role A, B, C, D, E)**
+> **Người thiết lập:** Role C (Eval & Evidence Engineer)
 > **Căn cứ:** Issue #2 — Capture v0 baseline and shared evidence rules
 
 ---
@@ -11,19 +11,19 @@
 Toàn bộ nhóm sử dụng kết quả baseline v0 dưới đây làm mốc so sánh (benchmark) trước khi tối ưu:
 
 - **Provider được chọn:** `openai`
-- **Model:** `gpt-5.6-luna` (sử dụng `reasoning_effort="none"` cho function calling)
-- **Artifact version:** `v0+p233ec2cecfdf+teb3e2243f237`
-  - `prompt_hash`: `233ec2cecfdf`
-  - `tools_hash`: `eb3e2243f237`
-- **Baseline Run File:** `starter_v0/runs/v0_B_base_openai_20260914T185238636918.json`
+- **Model:** `gpt-4o-mini` (OpenAI provider default)
+- **Artifact version:** `v0+p27467914bc4d+t86e19195220e`
+  - `prompt_hash`: `27467914bc4d`
+  - `tools_hash`: `86e19195220e`
+- **Baseline Run File:** `starter_v0/runs/v0_B_base_openai_20260914T192749735306.json`
 - **Baseline Metrics (Base Suite - 30 cases):**
   - `total_cases`: 30
   - `measured_cases`: 30 (100%)
   - `provider_error_cases`: **0** *(đạt chuẩn nghiệm thu)*
-  - `passed_cases`: 26 / 30
-  - `case_accuracy`: **86.67%** (0.8667)
-  - `tool_routing_accuracy`: 86.67%
-  - `argument_accuracy`: 86.67%
+  - `passed_cases`: 21 / 30
+  - `case_accuracy`: **70.0%** (0.7)
+  - `tool_routing_accuracy`: 76.67%
+  - `argument_accuracy`: 70.0%
   - `multiturn_accuracy`: 80.0% (8/10)
 
 ---
@@ -66,6 +66,7 @@ Một run chỉ được tính là hợp lệ để đưa vào báo cáo khi và
 1. `provider_error_cases == 0`
 2. `measured_cases == total_cases` (đo lường đủ 100% số cases của bộ test).
 3. Không có ngoại lệ chưa được bắt (unhandled exception).
+4. Hash tính lại từ artifact đã commit khớp với `prompt_hash` và `tools_hash` trong run.
 
 ---
 
@@ -101,6 +102,8 @@ version,author,changed_artifact,artifact_version,prompt_hash,tools_hash,reason,h
    - File bí mật `.env` hoặc bất kỳ API key / token thật nào.
    - Thư mục `.venv`, `__pycache__`.
    - Các file ticket rác sinh ra trong `starter_v0/tickets/` (khi test `create_ticket`).
+   - Run hoặc transcript chưa được review để loại secret và dữ liệu không cần thiết.
+   - Chỉ force-add từng evidence file đã được review; không mở theo dõi toàn bộ thư mục generated output.
 2. **Quy tắc phối hợp nhánh:**
    - Mỗi thành viên làm việc trên branch riêng của mình: `contrib/<github_username>` (ví dụ: `contrib/thanhnvhust514`).
    - Mở Pull Request vào `main` kèm theo link run evidence tương ứng để nhóm trưởng review và merge.
