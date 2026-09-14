@@ -27,19 +27,15 @@
       </aside>
 
       <section class="chat-panel">
-        <div class="panel-header"><div><p class="eyebrow">CONVERSATION</p><h2>Helpdesk workspace</h2></div><span class="live-pill" id="livePill">LIVE</span></div>
+        <div class="panel-header"><div><p class="eyebrow">CONVERSATION</p><h2>Helpdesk workspace</h2></div><div class="conversation-status"><span class="trace-count" id="traceCount">Ready</span><span class="live-pill" id="livePill">LIVE</span></div></div>
         <div class="messages" id="messages">
-          <div class="welcome"><div class="welcome-icon">✦</div><h3>Ready when you are.</h3><p>Ask about services, devices, users, policy or tickets.<br>Every action will appear in the trace beside this conversation.</p></div>
+          <div class="welcome"><div class="welcome-icon">✦</div><h3>Ready when you are.</h3><p>Ask about services, devices, users, policy or tickets.<br>Every action will appear in this conversation as it happens.</p></div>
+          <div class="trace-stream" id="traceStream"></div>
         </div>
         <form class="composer" id="composer"><textarea id="messageInput" rows="1" placeholder="Ask Northstar Helpdesk anything…" aria-label="Message Northstar Helpdesk"></textarea><button type="submit" id="sendButton" aria-label="Send message">↑</button></form>
         <p class="composer-note">Enter to send <span>·</span> Shift + Enter for a new line</p>
       </section>
 
-      <aside class="trace-panel">
-        <div class="panel-header"><div><p class="eyebrow">EXECUTION TRACE</p><h2>Live reasoning</h2></div><span class="trace-count" id="traceCount">0 events</span></div>
-        <div class="trace-stream" id="traceStream"><div class="trace-empty"><span>◎</span><p>Your live execution trace will appear here.</p></div></div>
-        <div class="artifact-card"><div class="artifact-top"><span>ARTIFACT VERSION</span><span class="verified">VERIFIED</span></div><strong id="artifactVersion">Loading…</strong><div class="hashes"><div><span>PROMPT</span><code id="promptHash">…</code></div><div><span>TOOLS</span><code id="toolsHash">…</code></div></div><div class="transcript-line" id="transcriptLine">Transcript will be saved after the first turn.</div></div>
-      </aside>
     </section>
   </main>
   <template id="traceTemplate"><article class="trace-card"><div class="trace-meta"><span class="trace-round"></span><span class="trace-state"></span></div><div class="trace-body"></div></article></template>
