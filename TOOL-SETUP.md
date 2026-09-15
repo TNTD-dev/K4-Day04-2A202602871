@@ -237,20 +237,20 @@ tra `.env`, quota và `tickets/` trước/sau khi chạy.
 
 ## 10. UI dependencies
 
-Starter không cung cấp UI implementation. Nếu chọn Streamlit:
+Operations Console dùng FastAPI và Uvicorn, đã được khai báo trong
+`requirements.txt`.
 
-```powershell
-python -m pip install "streamlit>=1.30.0"
+Khởi động từ thư mục `starter_v0/`:
+
+```bash
+python -m uvicorn ui_app:app --reload
 ```
 
-Thêm cùng version constraint vào `requirements.txt`, sau đó chạy:
+Mở `http://127.0.0.1:8000` trong browser.
+Console gọi lại `run_model_tool_loop` từ `chat.py` và stream từng round cùng
+tool event qua HTTP.
+API key provider vẫn phải có trong `.env`.
 
-```powershell
-streamlit run app.py
-```
-
-UI nên tái sử dụng `run_model_tool_loop` từ `chat.py` để CLI, eval evidence và UI
-không dùng các agent loop khác nhau.
 
 ## 11. Troubleshooting
 
