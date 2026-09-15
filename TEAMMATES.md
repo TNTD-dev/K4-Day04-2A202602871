@@ -5,11 +5,11 @@ Each member must replace any `CONFIRM` value with their official course record b
 
 | Full name | Student ID | GitHub username | Role | Merged evidence |
 |---|---|---|---|---|
-| Duc Tran | CONFIRM | TNTD-dev | Team lead, UI, integration, demo, report | PR #10 and integration commits |
-| CONFIRM | CONFIRM | CONFIRM | Role A, prompt behavior | Commit `f7128c7` |
-| CONFIRM | CONFIRM | jansulubituu - confirm account | Role C, baseline, eval, evidence | PR #9 |
-| CONFIRM | CONFIRM | anhdungbk | Role B, tool contracts | PR #11 |
-| Le Nguyen Quoc Bao | 23520108 - CONFIRM | lengqbaorr | Role E, security and bonus tool | PR #12 |
+| Trần Nguyễn Tiến Đức | 2A202602871 | TNTD-dev | Role D, team lead, UI, integration, demo, report | PR #10 and integration commits |
+| Hoàng Anh Tài | 2A202602612 | CONFIRM | Role A, prompt behavior | Commit `f7128c7` |
+| Nguyễn Việt Thành | 2A202602924 | jansulubituu | Role C, baseline, eval, evidence | PR #9 |
+| Nguyễn Anh Dũng | 2A202602554 | anhdungbk | Role B, tool contracts | PR #11 |
+| Lê Nguyễn Quốc Bảo | 2A202603011 | lengqbaorr | Role E, security and bonus tool | PR #12 |
 
 ## Individual self-reflections
 
