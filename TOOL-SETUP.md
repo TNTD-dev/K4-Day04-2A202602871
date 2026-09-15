@@ -232,8 +232,8 @@ Adversarial:
 python run_eval.py --provider openrouter --version v3 --suite adversarial --eval-cases data/eval_adversarial.json
 ```
 
-Extension có thể gọi Tavily và tạo ticket local ở confirmed-action cases. Kiểm
-tra `.env`, quota và `tickets/` trước/sau khi chạy.
+Eval có thể gọi Tavily khi extension yêu cầu external search.
+Mọi ticket do eval tạo được chuyển vào thư mục tạm và tự dọn khi run kết thúc.
 
 ## 10. UI dependencies
 
@@ -250,6 +250,16 @@ Mở `http://127.0.0.1:8000` trong browser.
 Console gọi lại `run_model_tool_loop` từ `chat.py` và stream từng round cùng
 tool event qua HTTP.
 API key provider vẫn phải có trong `.env`.
+
+Tạo lại năm transcript rehearsal bằng provider thật:
+
+```bash
+python scripts/rehearse_demo.py --provider openai --version v3
+```
+
+Script ghi evidence vào `evidence/transcripts/` và cô lập confirmed ticket trong thư mục tạm.
+Trong UI, chọn một mục dưới `SAVED EVIDENCE` để phát lại transcript.
+Header phải hiển thị `PLAYBACK` và `Saved evidence` trong toàn bộ thời gian phát lại.
 
 
 ## 11. Troubleshooting

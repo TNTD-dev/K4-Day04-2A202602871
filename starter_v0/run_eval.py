@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import tempfile
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -11,6 +12,7 @@ from agent import HelpdeskAgent
 from env_loader import load_lab_env
 from providers import make_provider
 from tools import TOOL_FUNCTIONS, load_tool_declarations, to_openai_tools
+from tools.create_ticket import tool as create_ticket_module
 from versioning import artifact_version_dict, build_artifact_version
 
 
@@ -284,6 +286,8 @@ def main() -> None:
     tool_declarations = load_tool_declarations(args.tools)
     validate_expected_tools(cases, tool_declarations, args.eval_cases)
     openai_tools = to_openai_tools(tool_declarations)
+    ticket_temp_dir = tempfile.TemporaryDirectory(prefix="northstar-eval-tickets-")
+    create_ticket_module.TICKET_DIR = Path(ticket_temp_dir.name)
 
     results: list[dict[str, Any]] = []
     for case in cases:
@@ -353,6 +357,7 @@ def main() -> None:
 
     out_path = args.runs_dir / f"{run_id}.json"
     out_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
+    ticket_temp_dir.cleanup()
     print_table(results, summary)
     print(f"\nArtifact version: {artifact_version.artifact_version}")
     print(f"\nSaved: {out_path}")

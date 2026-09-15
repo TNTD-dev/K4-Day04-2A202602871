@@ -26,6 +26,7 @@ ROOT = Path(__file__).parent
 ARTIFACTS = ROOT / "artifacts"
 WEB = ROOT / "web"
 TRANSCRIPTS = ROOT / "transcripts"
+REHEARSALS = ROOT / "evidence" / "transcripts"
 load_lab_env(ROOT)
 
 app = FastAPI(title="Northstar Operations Console")
@@ -46,7 +47,7 @@ class ChatRequest(BaseModel):
 
 
 def artifact() -> dict[str, str]:
-    return artifact_version_dict(build_artifact_version("v0", ARTIFACTS / "system_prompt.md", ARTIFACTS / "tools.yaml"))
+    return artifact_version_dict(build_artifact_version("v3", ARTIFACTS / "system_prompt.md", ARTIFACTS / "tools.yaml"))
 
 
 def available_providers() -> dict[str, bool]:
@@ -65,7 +66,21 @@ def index() -> FileResponse:
 
 @app.get("/api/bootstrap")
 def bootstrap() -> dict[str, Any]:
-    return {"artifact": artifact(), "providers": available_providers(), "tools": [tool["name"] for tool in load_tool_declarations(ARTIFACTS / "tools.yaml")]}
+    rehearsals = []
+    for path in sorted(REHEARSALS.glob("*.transcript.json")):
+        data = json.loads(path.read_text(encoding="utf-8"))
+        rehearsals.append({"id": data["transcript_id"], "title": data.get("scenario_title", data["transcript_id"])})
+    return {"artifact": artifact(), "providers": available_providers(), "tools": [tool["name"] for tool in load_tool_declarations(ARTIFACTS / "tools.yaml")], "rehearsals": rehearsals}
+
+
+@app.get("/api/rehearsals/{transcript_id}")
+def rehearsal(transcript_id: str) -> dict[str, Any]:
+    if not re.fullmatch(r"[A-Za-z0-9_-]+", transcript_id):
+        raise HTTPException(status_code=404, detail="Rehearsal not found.")
+    path = REHEARSALS / f"{transcript_id}.transcript.json"
+    if not path.is_file():
+        raise HTTPException(status_code=404, detail="Rehearsal not found.")
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 @app.post("/api/chat")
