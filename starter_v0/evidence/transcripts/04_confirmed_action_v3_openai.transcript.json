@@ -1,5 +1,5 @@
 {
-  "transcript_id": "04_confirmed_action",
+  "transcript_id": "04_confirmed_action_v3_openai",
   "scenario_title": "Confirmed ticket action",
   "evidence_mode": "saved_real_provider_run",
   "version": "v3",
@@ -59,7 +59,7 @@
                 "tool": "create_ticket",
                 "status": "created",
                 "ticket_id": "LAB-576835D8",
-                "path": "/tmp/northstar-rehearsal-tickets-eumi8aiy/LAB-576835D8.json"
+                "path": "isolated_ticket/LAB-576835D8.json"
               }
             }
           ]
@@ -84,7 +84,7 @@
             "tool": "create_ticket",
             "status": "created",
             "ticket_id": "LAB-576835D8",
-            "path": "/tmp/northstar-rehearsal-tickets-eumi8aiy/LAB-576835D8.json"
+            "path": "isolated_ticket/LAB-576835D8.json"
           }
         }
       ],

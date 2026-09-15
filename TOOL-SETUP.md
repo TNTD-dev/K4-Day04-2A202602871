@@ -77,6 +77,7 @@ routing accuracy.
 | `format_incident_report` | Local formatter | Không | Không |
 | `policy` | Local knowledge | `company_policy/*.md` | Không |
 | `create_ticket` | Local write action | Ghi vào `starter_v0/tickets/` | Không |
+| `lookup_ticket_status` | Local read-only | `helpdesk_data/ticket_status.json` | Không |
 | `search_device_info` | External search | Tavily Search API | `TAVILY_API_KEY` |
 
 ## 5. Local tools
@@ -139,6 +140,15 @@ python -c "from tools import TOOL_FUNCTIONS as T; r=T['policy']('dữ liệu nà
 ```
 
 PASS khi trả policy section có source metadata và trust boundary.
+
+### `lookup_ticket_status`
+
+```powershell
+python tools\lookup_ticket_status\smoke_test.py
+```
+
+PASS khi tra cứu đúng ticket giả lập, chuẩn hóa ID hợp lệ, từ chối ID sai định
+dạng và không thay đổi fixture nguồn.
 
 ## 6. Action tool: `create_ticket`
 
