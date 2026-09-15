@@ -8,8 +8,8 @@
   "suite": "extension",
   "provider": "openai",
   "model": "gpt-4o-mini",
-  "system_prompt": "/home/duckk/dev/personal/ai-in-action/K4-Day04-2A202602871/starter_v0/artifacts/system_prompt.md",
-  "tools": "/home/duckk/dev/personal/ai-in-action/K4-Day04-2A202602871/starter_v0/artifacts/tools.yaml",
+  "system_prompt": "artifacts/system_prompt.md",
+  "tools": "artifacts/tools.yaml",
   "eval_cases": "data/eval_helpdesk_extension.json",
   "dataset_id": "day04_v3_helpdesk_extension",
   "dataset_role": "extension",
@@ -435,7 +435,7 @@
             "tool": "create_ticket",
             "status": "created",
             "ticket_id": "LAB-FACDA927",
-            "path": "/tmp/northstar-eval-tickets-6paxjqyp/LAB-FACDA927.json"
+            "path": "isolated_ticket/LAB-FACDA927.json"
           }
         }
       ]
@@ -714,7 +714,7 @@
             "tool": "create_ticket",
             "status": "created",
             "ticket_id": "LAB-56753F4C",
-            "path": "/tmp/northstar-eval-tickets-6paxjqyp/LAB-56753F4C.json"
+            "path": "isolated_ticket/LAB-56753F4C.json"
           }
         }
       ]

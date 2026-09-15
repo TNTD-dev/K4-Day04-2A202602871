@@ -58,9 +58,8 @@ Verified external-search boundaries:
   in `untrusted_text`.
 - No real Tavily request or real credential was used by the smoke test.
 
-Result: all local Role E security smoke checks passed. Model-level behavior must
-still be verified by a valid v3 adversarial run after the committed v1/v2
-artifacts are integrated.
+Result: all local Role E security smoke checks passed.
+Model-level behavior was subsequently verified in the reviewed v3 adversarial run documented below.
 
 ## 3. Bonus tool evidence
 
@@ -84,71 +83,28 @@ Verified behavior:
 
 Result: all `lookup_ticket_status` smoke checks passed.
 
-## 4. Integration handoff
+## 4. Final integration evidence
 
-### Role B — proposed declaration
+Role B integrated `lookup_ticket_status` into `artifacts/tools.yaml` as a read-only tool with an exact `LAB-XXXXXXXX` identifier contract.
+Role C covered it in the final original group suite through cases `G01` and `G10` while preserving exactly five single-turn and five multi-turn cases.
 
-Role B should review and add this declaration to `artifacts/tools.yaml`:
+The reviewed final runs are:
 
-```yaml
-- name: lookup_ticket_status
-  description: "Tra cứu trạng thái hiện tại của đúng một ticket giả lập bằng ticket ID dạng LAB-XXXXXXXX. Chỉ dùng để đọc; không tạo, sửa hoặc đóng ticket. Nếu thiếu ticket ID, hãy hỏi lại thay vì tự đoán."
-  parameters:
-    type: object
-    properties:
-      ticket_id:
-        type: string
-        pattern: "^LAB-[A-Fa-f0-9]{8}$"
-        description: "Ticket ID chính xác, ví dụ LAB-A1B2C3D4"
-    required: [ticket_id]
-```
+- Group: `runs/v3_B_group_openai_20260915T082123831650.json`, 9/10 cases passed, 10/10 measured, 0 provider errors.
+- Adversarial: `runs/v3_B_adversarial_openai_20260915T082218767150.json`, 9/12 cases passed, 12/12 measured, 0 provider errors.
 
-### Role C — proposed original team-eval case
+The rehearsed UI evidence is saved in:
 
-Role C chooses the final `Gxx` identifier and must keep the complete group suite
-at exactly five single-turn and five multi-turn cases.
+- `evidence/transcripts/01_multi_tool_triage_v3_openai.transcript.json`
+- `evidence/transcripts/02_missing_information_v3_openai.transcript.json`
+- `evidence/transcripts/03_multiturn_correction_v3_openai.transcript.json`
+- `evidence/transcripts/04_confirmed_action_v3_openai.transcript.json`
+- `evidence/transcripts/05_security_boundary_v3_openai.transcript.json`
 
-```json
-{
-  "id": "Gxx_lookup_ticket_status",
-  "phase": "B",
-  "suite": "group",
-  "query": "Kiểm tra trạng thái ticket LAB-B2C3D4E5 giúp mình.",
-  "failure_type": "wrong_tool",
-  "expect": {
-    "tool_calls": [
-      {
-        "name": "lookup_ticket_status",
-        "args": {"ticket_id": "LAB-B2C3D4E5"}
-      }
-    ]
-  },
-  "metadata": {
-    "what_it_tests": "Route an exact ticket-status read to the team-built tool without creating or updating a ticket."
-  }
-}
-```
+Each transcript includes the artifact version, prompt and tool hashes, turns, tool calls, results, and assistant response.
+The UI exposes these files as saved playback and shows the artifact identity in a compact verified control.
 
-Expected fixture result: status `in_progress`, priority `medium`, asset
-`LT-240`; no `create_ticket` call and no filesystem write.
+The final integrated artifact is `v3+p096f9dd4c230+t6beb9057c70d`.
+The corresponding v3 row is recorded in `artifacts/version_log.csv`.
 
-### Role D — trace and report
-
-The demo trace must show the exact user request, tool call and argument, read-only
-result, final response, artifact version, and hashes. Saved playback must be
-clearly labeled. Report sections B4a/B5/B6 should use this file together with
-the final reviewed v3 adversarial run and bonus-tool transcript.
-
-## 5. Evidence still pending
-
-- Valid v3 adversarial run:
-  `runs/v3_B_adversarial_openai_<timestamp>.json`.
-- Valid team-eval run containing the integrated bonus case.
-- Rehearsed transcript following
-  `transcripts/<scenario>_v3_openai.transcript.json` and containing artifact
-  version, prompt/tool hashes, turns, calls, results, and assistant text.
-- One v3 row in `artifacts/version_log.csv` after the successful runs, with
-  hashes recomputed from the committed final artifacts.
-
-Only individually reviewed run/transcript files may be force-added. Generated
-tickets, `.env`, API keys, caches, and unreviewed output must remain uncommitted.
+Generated tickets, `.env`, API keys, caches, and unreviewed output remain excluded from version control.

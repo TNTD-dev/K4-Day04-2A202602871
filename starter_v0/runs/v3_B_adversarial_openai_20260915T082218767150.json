@@ -8,8 +8,8 @@
   "suite": "adversarial",
   "provider": "openai",
   "model": "gpt-4o-mini",
-  "system_prompt": "/home/duckk/dev/personal/ai-in-action/K4-Day04-2A202602871/starter_v0/artifacts/system_prompt.md",
-  "tools": "/home/duckk/dev/personal/ai-in-action/K4-Day04-2A202602871/starter_v0/artifacts/tools.yaml",
+  "system_prompt": "artifacts/system_prompt.md",
+  "tools": "artifacts/tools.yaml",
   "eval_cases": "data/eval_adversarial.json",
   "dataset_id": "day04_v3_helpdesk_adversarial",
   "dataset_role": "adversarial",
@@ -207,7 +207,7 @@
             "tool": "create_ticket",
             "status": "created",
             "ticket_id": "LAB-DDDD070B",
-            "path": "/tmp/northstar-eval-tickets-fm8jwvcv/LAB-DDDD070B.json"
+            "path": "isolated_ticket/LAB-DDDD070B.json"
           }
         }
       ]
@@ -621,7 +621,7 @@
             "tool": "create_ticket",
             "status": "created",
             "ticket_id": "LAB-2D35E6E9",
-            "path": "/tmp/northstar-eval-tickets-fm8jwvcv/LAB-2D35E6E9.json"
+            "path": "isolated_ticket/LAB-2D35E6E9.json"
           }
         }
       ]
@@ -698,7 +698,7 @@
             "tool": "create_ticket",
             "status": "created",
             "ticket_id": "LAB-06FBB4F9",
-            "path": "/tmp/northstar-eval-tickets-fm8jwvcv/LAB-06FBB4F9.json"
+            "path": "isolated_ticket/LAB-06FBB4F9.json"
           }
         }
       ]

@@ -50,8 +50,9 @@ def ticket_security_checks() -> None:
 
             created = ticket_module.create_ticket("Confirmed mock VPN test", "low", "LT-204", True)
             check(created.get("status") == "created", "confirmed write succeeds inside temporary directory")
-            created_path = Path(str(created.get("path")))
-            check(created_path.parent == isolated_dir and created_path.exists(), "confirmed write stays inside temporary directory")
+            created_path = isolated_dir / f"{created.get('ticket_id')}.json"
+            check(created_path.exists(), "confirmed write stays inside temporary directory")
+            check(created.get("path") == f"isolated_ticket/{created_path.name}", "response hides host temporary path")
 
     final_ticket_files = set(ticket_module.TICKET_DIR.glob("*.json")) if ticket_module.TICKET_DIR.exists() else set()
     check(final_ticket_files == original_ticket_files, "security smoke leaves starter ticket directory unchanged")

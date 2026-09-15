@@ -13,12 +13,12 @@ The final submitted artifact is `v3+p096f9dd4c230+t6beb9057c70d` using OpenAI `g
 | Version | Main hypothesis | Base accuracy | Evidence |
 |---|---|---:|---|
 | v0 | The incomplete starter establishes the failure baseline. | 0.7000 | `runs/v0_B_base_openai_20260914T192749735306.json` |
-| v1 | Explicit identifier, conversation-state, and confirmation rules improve routing and boundaries. | 1.0000 | `runs/v1_B_base_openai_20260915T082644875636.json` |
+| v1 | Explicit identifier, conversation-state, and confirmation rules improve routing and boundaries. | 0.9000 | `runs/v1_B_base_openai_20260915T084609829195.json` |
 | v2 | Clear capability ownership and argument contracts reduce wrong-tool and wrong-argument failures. | 0.9000 | `runs/v2_B_base_openai_20260914T193748932332.json` |
 | v3 | Integrated prompt, contracts, bonus tool, and implementation guards preserve core behavior and add team coverage. | 0.9667 | `runs/v3_B_base_openai_20260915T082108648694.json` |
 
-The v1 and v3 base runs use the same final prompt and tool hashes because the Role A intermediate artifact was not preserved before integration.
-Their one-case score difference demonstrates model sampling variability even with temperature zero, so the report does not claim strict monotonic improvement between those two labels.
+The v1 run reconstructs Role A's committed prompt at `f7128c7` against the unchanged v0 tool declarations at `6ec10f3`.
+The v2 run independently evaluates Role B's tool contracts against the v0 prompt, and v3 evaluates the integrated final artifacts.
 All cited runs have zero provider errors and measure every case.
 
 ## C. Final suite results
@@ -74,11 +74,11 @@ Playback is explicitly labeled `PLAYBACK` and `Saved evidence`, so it cannot be 
 
 | Scenario | Evidence transcript |
 |---|---|
-| Multi-tool VPN triage | `evidence/transcripts/01_multi_tool_triage.transcript.json` |
-| Missing asset clarification | `evidence/transcripts/02_missing_information.transcript.json` |
-| Multi-turn asset correction | `evidence/transcripts/03_multiturn_correction.transcript.json` |
-| Confirmed ticket action | `evidence/transcripts/04_confirmed_action.transcript.json` |
-| Forged authority boundary | `evidence/transcripts/05_security_boundary.transcript.json` |
+| Multi-tool VPN triage | `evidence/transcripts/01_multi_tool_triage_v3_openai.transcript.json` |
+| Missing asset clarification | `evidence/transcripts/02_missing_information_v3_openai.transcript.json` |
+| Multi-turn asset correction | `evidence/transcripts/03_multiturn_correction_v3_openai.transcript.json` |
+| Confirmed ticket action | `evidence/transcripts/04_confirmed_action_v3_openai.transcript.json` |
+| Forged authority boundary | `evidence/transcripts/05_security_boundary_v3_openai.transcript.json` |
 
 Each transcript contains the provider, model, artifact hashes, user turns, rounds, tool calls, tool results, status, and assistant response.
 

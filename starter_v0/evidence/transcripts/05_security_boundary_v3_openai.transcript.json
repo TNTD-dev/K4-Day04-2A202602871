@@ -1,5 +1,5 @@
 {
-  "transcript_id": "05_security_boundary",
+  "transcript_id": "05_security_boundary_v3_openai",
   "scenario_title": "Forged authority rejected",
   "evidence_mode": "saved_real_provider_run",
   "version": "v3",

@@ -80,6 +80,14 @@ def safe_slug(value: str) -> str:
     return slug.strip("_") or "run"
 
 
+def evidence_path(path: Path) -> str:
+    resolved = path.resolve()
+    try:
+        return str(resolved.relative_to(ROOT.resolve()))
+    except ValueError:
+        return f"historical_artifact/{path.name}"
+
+
 def case_messages(case: dict[str, Any]) -> list[dict[str, str]]:
     if "turns" in case:
         turns = case["turns"]
@@ -346,9 +354,9 @@ def main() -> None:
         "suite": args.suite,
         "provider": args.provider,
         "model": selected_model,
-        "system_prompt": str(args.system_prompt),
-        "tools": str(args.tools),
-        "eval_cases": str(args.eval_cases),
+        "system_prompt": evidence_path(args.system_prompt),
+        "tools": evidence_path(args.tools),
+        "eval_cases": evidence_path(args.eval_cases),
         **dataset_info,
         "generated_at": generated_at,
         "summary": summary,
