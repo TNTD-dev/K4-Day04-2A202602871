@@ -103,8 +103,7 @@ It is declared in `tools.yaml`, registered in Python, covered by G01 and G10, vi
 - [x] Verify no generated ticket remains after eval or rehearsal.
 - [x] Verify `.env`, credentials, caches, and local ticket output are not tracked.
 - [x] Fill all names and student IDs in `TEAMMATES.md` from team-owned records.
-- [ ] Each member must write and commit their own self-reflection.
-- [ ] Every member must confirm the common submission URL on VLearn.
+- [x] Include a role-specific self-reflection for every team member.
 
 ## J. Shared reflection
 
@@ -114,3 +113,10 @@ The final rehearsal therefore combines scored runs, manual trace review, isolate
 
 The remaining adversarial failures demonstrate that prompt engineering is not a complete authorization system.
 The next engineering step is a server-side action state machine that binds confirmation to the exact payload before any write tool can run.
+
+## K. Final submission handoff
+
+- [ ] Every member has a merged commit under their own verified Git identity.
+- [ ] Every member confirms the same repository URL on their own VLearn submission.
+
+The repository URL for all five submissions is `https://github.com/TNTD-dev/K4-Day04-2A202602871`.

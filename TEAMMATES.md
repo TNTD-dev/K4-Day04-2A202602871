@@ -15,7 +15,7 @@ The rows below combine the team's official course records with merged contributi
 Each member must write their own reflection below and commit it under their own Git identity.
 A useful reflection states what they changed, what evidence changed their mind, one limitation, and what they would improve next.
 
-### Team lead
+### Role D (Team lead)
 
 Tôi phụ trách điều phối nhóm, tích hợp các nhánh, xây dựng UI streaming và chuẩn bị demo cuối.
 Qua quá trình tích hợp, tôi nhận ra một giao diện đẹp chỉ có giá trị khi người xem theo dõi được tool call, arguments, result, lỗi và phản hồi cuối trong cùng một hội thoại.
