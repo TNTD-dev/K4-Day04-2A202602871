@@ -114,9 +114,4 @@ The final rehearsal therefore combines scored runs, manual trace review, isolate
 The remaining adversarial failures demonstrate that prompt engineering is not a complete authorization system.
 The next engineering step is a server-side action state machine that binds confirmation to the exact payload before any write tool can run.
 
-## K. Final submission handoff
-
-- [ ] Every member has a merged commit under their own verified Git identity.
-- [ ] Every member confirms the same repository URL on their own VLearn submission.
-
 The repository URL for all five submissions is `https://github.com/TNTD-dev/K4-Day04-2A202602871`.
