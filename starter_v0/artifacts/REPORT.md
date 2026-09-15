@@ -97,7 +97,7 @@ It is declared in `tools.yaml`, registered in Python, covered by G01 and G10, vi
 - [x] Label saved playback clearly in the UI.
 - [x] Verify no generated ticket remains after eval or rehearsal.
 - [x] Verify `.env`, credentials, caches, and local ticket output are not tracked.
-- [ ] Fill all names and student IDs in `TEAMMATES.md` from team-owned records.
+- [x] Fill all names and student IDs in `TEAMMATES.md` from team-owned records.
 - [ ] Each member must write and commit their own self-reflection.
 - [ ] Every member must confirm the common submission URL on VLearn.
 
