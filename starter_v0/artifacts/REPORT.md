@@ -72,6 +72,11 @@ For a production system, `create_ticket` should require server-side pending-acti
 The UI provides five live scenario starters and five saved real-provider transcripts.
 Playback is explicitly labeled `PLAYBACK` and `Saved evidence`, so it cannot be mistaken for a live run.
 
+![Northstar Helpdesk UI showing a saved multi-tool conversation, collapsible Working trace, verified v3 artifact, and grounded final response](images/ui-playback.png)
+
+The screenshot above captures the reviewed multi-tool VPN playback in the submitted light UI.
+The collapsed `Worked` control keeps the final answer readable while preserving access to all four execution events.
+
 | Scenario | Evidence transcript |
 |---|---|
 | Multi-tool VPN triage | `evidence/transcripts/01_multi_tool_triage_v3_openai.transcript.json` |
